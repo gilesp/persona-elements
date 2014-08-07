@@ -1,0 +1,29 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-shadow/paper-shadow.html">
+
+<polymer-element name="persona-word">
+  <template>
+    <style>
+     .wrapper {
+       float: left;
+     }
+     .word {
+       padding: 0.5rem;
+       background-color: #607d8b;
+       color: white;
+       margin: 0.5rem;
+     }
+    </style>
+
+    <div class="wrapper" layout horizontal>
+      <div class="word">
+        <paper-shadow z="1"></paper-shadow>
+        <content></content>
+      </div>
+    </div>
+  </template>
+
+  <script>
+   Polymer({});
+  </script>
+</polymer-element>
