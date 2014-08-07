@@ -1,7 +1,8 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-fab/paper-fab.html">
+<link rel="import" href="persona-word.html">
 
-<polymer-element name="persona-section" attributes="heading">
+<polymer-element name="persona-section" attributes="section">
   <template>
     <style>
      .section-item {
@@ -47,7 +48,7 @@
       <div class="tile theme-bg-a" dummy fit></div><!-- what does dummy do? -->
       <div class="tile" flex vertical layout>
         <div class="section-name" horizontal center layout>
-          <div flex><h3>{{heading}}</h3></div>
+          <div flex><h3>{{section.heading}}</h3></div>
           <paper-fab icon="add" class="mini"></paper-fab>
         </div>
         <div flex relative>
@@ -55,7 +56,9 @@
           <div fit layout vertical center center-justified>
             <div class="category-bg-wrapper" relative>
               <div fit>
-                <content></content>
+                <template repeat="{{item in items}}">
+                  <persona-word>{{item}}</persona-word>
+                </template>
               </div>
             </div>
           </div>
