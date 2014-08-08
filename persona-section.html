@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-fab/paper-fab.html">
+<link rel="import" href="../paper-input/paper-input.html">
+
 <link rel="import" href="persona-word.html">
 
 <polymer-element name="persona-section" attributes="section">
@@ -11,11 +13,17 @@
        vertical-align: top;
        will-change: transform;
        background-color: #738ffe;
+       background-color: #b388ff;
+       background-color: #84ffff;
+       background-color: #b9f6ca;
        margin: 4px;
      }
 
      .section-name {
        background-color: #5677fc;
+       background-color: #7e57c2;
+       background-color: #03A9F4;
+       background-color: #1de9b6;
        color: #ffffff;
        margin: -4px;
        padding: 4px;
@@ -42,6 +50,7 @@
      .section-item:nth-of-type(2) {
        width: calc(100% / 2 - 8px);
      }
+
     </style>
 
     <div class="section-item" vertical layout>
@@ -49,7 +58,10 @@
       <div class="tile" flex vertical layout>
         <div class="section-name" horizontal center layout>
           <div flex><h3>{{section.heading}}</h3></div>
-          <paper-fab icon="add" class="mini"></paper-fab>
+          <div flex self-center>
+            <paper-input id="itemInput" label="Enter attribute..." value="{{newItemValue}}" on-change="{{handleNewItem}}"></paper-input>
+          </div>
+          <paper-fab icon="add" class="mini" on-tap={{showNewItemInput}}></paper-fab>
         </div>
         <div flex relative>
           <!-- sizing wrapper -->
@@ -67,6 +79,22 @@
     </div>
   </template>
   <script>
-   Polymer({});
+   Polymer('persona-section', {
+     ready: function() {
+       //hide the input field
+       this.$.itemInput.style.display="none";
+     },
+     showNewItemInput: function(event, detail, sender) {
+       this.$.itemInput.style.display="inline";
+     },
+     handleNewItem: function(event, detail, sender) {
+       if(detail !== undefined) {
+         this.section.items.push(this.newItemValue);
+         this.$.itemInput.value = "";
+         this.$.itemInput.inputValue = "";
+         this.$.itemInput.style.display="none";
+       }
+     }
+   });
   </script>
 </polymer-element>
