@@ -3,6 +3,35 @@
 <link rel="import" href="../core-toolbar/core-toolbar.html">
 <link rel="import" href="persona-section.html">
 
+<!--
+Element to display the full detail of a persona.
+
+#### Example
+
+    <persona-detail persona=""></persona-detail>
+
+The persona is a json definition of the form
+
+    {
+      name: "John Smith",
+      age: "27",
+      sex: "Male",
+      image: "http://yourhost/profilePic.jpg",
+      sections: [
+        {
+          heading: "Section 1",
+          items: ["Something", "Another thing", "Yet another item"]
+        }
+      ]
+    }
+
+You'll probably want to bind this to an ajax request or similar.
+
+@element persona-detail
+@blurb Element to display the full detail of a persona
+@status alpha
+@homepage http://github.com/gilesp/persona-elements
+-->
 <polymer-element name="persona-detail" attributes="persona">
   <template>
     <style>
@@ -75,6 +104,12 @@
   </template>
   <script>
    Polymer('persona-detail', {
+     /**
+      * The `persona` attribute sets the initial persona details
+      *
+      * @attribute persona
+      * @type json
+      */
      persona: {
        name: "Emmet Brickowski",
        image: "http://api.randomuser.me/portraits/med/lego/1.jpg",

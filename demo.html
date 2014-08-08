@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>persona-element Demo</title>
+
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="persona-detail.html">
+
+</head>
+<body unresolved>
+
+  <p>An example of using <code>&lt;persona-detail></code>:</p>
+
+  <persona-detail persona='{
+                    "name": "Emmet Brickowski",
+                    "image": "http://api.randomuser.me/portraits/med/lego/1.jpg",
+                    "sex": "Male",
+                    "age": "22",
+                    "sections": [
+                      {
+                        "heading": "Section 1",
+                        "items": [
+                          "Lego", "Plastic", "Hero"
+                        ]
+                      }
+                    ]
+                  }'></persona-detail>
+
+</body>
+</html>
