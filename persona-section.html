@@ -27,6 +27,18 @@
        color: #ffffff;
        margin: -4px;
        padding: 4px;
+       padding-left: 10px;
+       padding-right: 10px;
+     }
+
+     .section-name paper-fab {
+       background-color: #ffffff;
+       color: #1de9b6;
+       margin-left: 10px;
+     }
+
+     .section-name paper-fab::shadow #ripple {
+       color: #1de9b6;
      }
      .section-item[needZ] {
        z-index: 10000;
@@ -51,6 +63,10 @@
        width: calc(100% / 2 - 8px);
      }
 
+     #itemInput {
+       top: 10px;
+     }
+
     </style>
 
     <div class="section-item" vertical layout>
@@ -59,9 +75,17 @@
         <div class="section-name" horizontal center layout>
           <div flex><h3>{{section.heading}}</h3></div>
           <div flex self-center>
-            <paper-input id="itemInput" label="Enter attribute..." value="{{newItemValue}}" on-change="{{handleNewItem}}"></paper-input>
+            <paper-input id="itemInput"
+                         label="Enter attribute..."
+                         value="{{newItemValue}}"
+                         on-change="{{handleNewItem}}"
+                         on-keydown="{{checkForEscape}}">
+            </paper-input>
           </div>
-          <paper-fab icon="add" class="mini" on-tap={{showNewItemInput}}></paper-fab>
+          <paper-fab icon="add"
+                     class="mini"
+                     on-tap="{{showNewItemInput}}">
+          </paper-fab>
         </div>
         <div flex relative>
           <!-- sizing wrapper -->
@@ -90,6 +114,13 @@
      handleNewItem: function(event, detail, sender) {
        if(detail !== undefined) {
          this.section.items.push(this.newItemValue);
+         this.$.itemInput.value = "";
+         this.$.itemInput.inputValue = "";
+         this.$.itemInput.style.display="none";
+       }
+     },
+     checkForEscape: function(event, detail, sender) {
+       if(event.keyCode == 27) {
          this.$.itemInput.value = "";
          this.$.itemInput.inputValue = "";
          this.$.itemInput.style.display="none";
